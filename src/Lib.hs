@@ -27,10 +27,10 @@ list2tuple :: [a] -> (a,a)
 list2tuple [a,b] = (a,b)
 
 -- | Replies "pong" to every message that starts with "ping"
-discordMain :: IO ()
-discordMain = do
+discordMain :: String -> IO ()
+discordMain token = do
     userFacingError <- runDiscord $ def
-             { discordToken = "Bot ODY0NjI2NDY2MzM0NDQxNDcy.YO4MJQ.NwgnD4GtsvTdFGw106a9ZH1ce7Y"
+             { discordToken = pack token
              , discordOnEvent = eventHandler
              , discordOnLog = \s -> TIO.putStrLn s >> TIO.putStrLn ""
              } -- if you see OnLog error, post in the discord / open an issue
