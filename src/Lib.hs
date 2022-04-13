@@ -18,7 +18,9 @@ import qualified Control.Monad as Prelude
 
 data Outcomes a = Rolls [a] | Modifier a deriving (Ord,Eq, Show)
 
-discordMain :: String -> IO ()
+type Token = String
+
+discordMain :: Token -> IO ()
 discordMain token = do userFacingError <- runDiscord $ def
                          { discordToken = pack token
                          , discordOnEvent = eventHandler

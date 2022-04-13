@@ -3,5 +3,5 @@ import Lib (discordMain)
 import System.Environment ( getArgs )
 
 main :: IO ()
-main = do [token] <- getArgs
+main = do token <- readFile ".token"
           discordMain token
